@@ -6,14 +6,14 @@ import ExpensesFilter from './ExpensesFilter';
 import './Expenses.css';
 
 const Expenses = (props) => {
-  const [filterValue,setFilterValue] = useState();
+  const [filterValue,setFilterValue] = useState('2020');
   const retreivingFilterValue = (fValue) =>{
     console.log("Expenses has got this value : " + fValue);
     setFilterValue(fValue);
   };
   return (
     <Card className="expenses">
-      <ExpensesFilter onGettingFilterValue={retreivingFilterValue}/>
+      <ExpensesFilter selected={filterValue} onGettingFilterValue={retreivingFilterValue}/>
       <ExpenseItem
         title={props.items[0].title}
         amount={props.items[0].amount}
