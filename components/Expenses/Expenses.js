@@ -14,7 +14,16 @@ const Expenses = (props) => {
   return (
     <Card className="expenses">
       <ExpensesFilter selected={filterValue} onGettingFilterValue={retreivingFilterValue}/>
-      <ExpenseItem
+      {props.items.map((item)=>{
+        if(item.date.getFullYear() != filterValue){
+          return;
+        }
+      return (
+          <ExpenseItem title={item.title} amount={item.amount} date={item.date} />
+      );
+      }
+      )}
+      {/* <ExpenseItem
         title={props.items[0].title}
         amount={props.items[0].amount}
         date={props.items[0].date}
@@ -33,7 +42,7 @@ const Expenses = (props) => {
         title={props.items[3].title}
         amount={props.items[3].amount}
         date={props.items[3].date}
-      />
+      /> */}
     </Card>
   );
 }
